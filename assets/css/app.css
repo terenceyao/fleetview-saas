@@ -410,3 +410,19 @@ label.fl{display:block;font-size:11px;font-weight:700;color:var(--tx-3);letter-s
   .kpi-val{font-size:22px}
   .search input{width:150px}
 }
+
+/* ================= 视频监控 ================= */
+.video-wrap{padding:0 16px 16px}
+.video-box{position:relative;border-radius:var(--r-l);overflow:hidden;background:#05090F;border:1px solid var(--line);aspect-ratio:16/9;max-height:540px;width:100%}
+.video-box video{width:100%;height:100%;object-fit:contain;background:#05090F;display:block}
+.video-cover{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--tx-2)}
+.live-badge{position:absolute;top:12px;left:12px;background:#F0453A;color:#fff;font-size:10.5px;font-weight:800;letter-spacing:1.2px;padding:3px 9px;border-radius:6px;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
+.video-box .spin{position:static}
+
+/* 滑块 */
+input[type=range]{-webkit-appearance:none;appearance:none;height:4px;border-radius:3px;background:#1E2E48;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:14px;height:14px;border-radius:50%;background:var(--blue);cursor:pointer;border:2px solid #0B1220;box-shadow:0 0 0 3px rgba(42,194,243,.18)}
+
+/* 语言切换 seg 复用 .seg；顶栏过窄时隐藏时间范围 */
+@media(max-width:1060px){ #rangeSeg{display:none} }

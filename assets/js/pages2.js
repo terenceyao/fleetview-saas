@@ -414,6 +414,12 @@
     { m: 'GET', p: '/v3/tokens/page', s: 'API Token 分页', q: { page: 1, size: 5 } },
     { m: 'GET', p: '/v3/gateways/list', s: '网关列表' },
     { m: 'GET', p: '/v3/obd', s: '查询 OBD 数据', q: { imei: '', startTime: 0, endTime: 0 } },
+    { m: 'POST', p: '/v3/video/live/start', s: '开启实时视频', b: { imei: '', channel: 1, dataType: 'audio_video', streamType: 'main_stream' } },
+    { m: 'POST', p: '/v3/video/live/stop', s: '停止实时视频', b: { imei: '', channel: 1 } },
+    { m: 'POST', p: '/v3/video/files/list', s: '视频文件列表', b: { imei: '', startTime: 0, endTime: 0, channel: 1 } },
+    { m: 'POST', p: '/v3/video/playback/start', s: '录像回放开始', b: { imei: '', channel: 1, fileNames: [] } },
+    { m: 'POST', p: '/v3/video/capture/start', s: '远程抓拍', b: { imei: '', channel: 1, type: 1 } },
+    { m: 'GET', p: '/v3/alerts/video/fetch', s: '获取告警视频', q: { imei: '', alertTime: 0, alertCode: '', alertType: '' } },
     { m: 'POST', p: '/v3/geocoding/reverse', s: '逆地理编码', b: { lat: 22.5766, lng: 113.9431 } }
   ];
   var TSP_EPS = [
@@ -591,6 +597,8 @@
       '<div class="grid g-2 mt">' +
         '<div class="card">' +
           '<div class="card-h"><h3>应用偏好</h3></div>' +
+          '<div class="field"><label class="fl">界面语言 / Language</label><select class="sel" id="appLang">' +
+            '<option value="zh">中文</option><option value="en">English</option><option value="es">Español</option></select></div>' +
           '<div class="field" style="display:flex;align-items:center;gap:12px">' +
             '<div class="switch ' + (c.app.autoRefresh ? 'on' : '') + '" id="swAuto"></div>' +
             '<div><div style="font-size:13px;font-weight:600">自动刷新</div>' +
@@ -635,6 +643,7 @@
     }
 
     U.$('#swAuto').addEventListener('click', function () { this.classList.toggle('on'); });
+    if (w.I18N) U.$('#appLang').value = w.I18N.lang();
 
     U.$('#btnSave').addEventListener('click', function () {
       collect();

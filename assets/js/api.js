@@ -171,7 +171,21 @@
         });
       },
       alert: function (id) { return req('GET', '/v3/alerts/' + id); },
-      alertVideo: function (id) { return req('GET', '/v3/alerts/video/fetch', { query: { id: id } }); },
+      /** 告警事件视频抓取（设备经 MQTT 异步上传，2112=无关联视频） */
+      alertVideoFetch: function (p) {
+        return req('GET', '/v3/alerts/video/fetch', {
+          query: { imei: p.imei, alertTime: p.alertTime, alertCode: p.alertCode, alertType: p.alertType },
+          timeout: 45000
+        });
+      },
+
+      /* ---- 视频（实时预览 / 回放 / 文件 / 抓拍） ---- */
+      videoLiveStart: function (body) { return req('POST', '/v3/video/live/start', { body: body, timeout: 45000 }); },
+      videoLiveStop: function (body) { return req('POST', '/v3/video/live/stop', { body: body, timeout: 30000 }); },
+      videoPlaybackStart: function (body) { return req('POST', '/v3/video/playback/start', { body: body, timeout: 45000 }); },
+      videoPlaybackControl: function (body) { return req('POST', '/v3/video/playback/control', { body: body, timeout: 30000 }); },
+      videoFilesList: function (body) { return req('POST', '/v3/video/files/list', { body: body, timeout: 45000 }); },
+      videoCapture: function (body) { return req('POST', '/v3/video/capture/start', { body: body, timeout: 30000 }); },
 
       trips: function (p) {
         p = p || {};

@@ -32,6 +32,9 @@
   <symbol id="i-download" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></symbol>
   <symbol id="i-link" viewBox="0 0 24 24"><path d="M3.9 12A3.1 3.1 0 0 1 7 8.9h4V7H7a5 5 0 0 0 0 10h4v-1.9H7A3.1 3.1 0 0 1 3.9 12zM8 13h8v-2H8v2zm9-6h-4v1.9h4a3.1 3.1 0 0 1 0 6.2h-4V17h4a5 5 0 0 0 0-10z"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4z"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M12 4a10 10 0 0 0-10 10c0 2.4.85 4.6 2.26 6.33l1.5-1.32A7.95 7.95 0 0 1 4 14a8 8 0 1 1 16 0c0 1.85-.63 3.55-1.68 4.9l1.5 1.32A9.96 9.96 0 0 0 22 14 10 10 0 0 0 12 4zm3.54 6.05-4.3 3.54a1.5 1.5 0 1 0 1.9 2.32l3.53-4.3a1 1 0 0 0-1.13-1.56z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 15-3.5-3.5 1.41-1.41L11 13.17l4.59-4.58L17 10l-6 6z"/></symbol>
 </svg>
 
 <!-- ============ 应用外壳 ============ -->
@@ -57,6 +60,10 @@
       <a class="nav-item" data-page="alerts"><svg class="ico"><use href="#i-alert"/></svg><span>告警中心</span><em class="nav-badge warn" id="nb-alerts"></em></a>
       <a class="nav-item" data-page="trips"><svg class="ico"><use href="#i-trip"/></svg><span>行程与里程</span></a>
       <a class="nav-item" data-page="geofence"><svg class="ico"><use href="#i-fence"/></svg><span>围栏管理</span></a>
+      <div class="nav-group">视频与智能</div>
+      <a class="nav-item" data-page="video"><svg class="ico"><use href="#i-video"/></svg><span>实时视频</span></a>
+      <a class="nav-item" data-page="obd"><svg class="ico"><use href="#i-gauge"/></svg><span>OBD 数据分析</span></a>
+      <a class="nav-item" data-page="adas"><svg class="ico"><use href="#i-shield"/></svg><span>ADAS·DMS 智能筛选</span></a>
       <div class="nav-group">平台资源</div>
       <a class="nav-item" data-page="platform"><svg class="ico"><use href="#i-gateway"/></svg><span>网关与模型</span></a>
       <a class="nav-item" data-page="media"><svg class="ico"><use href="#i-media"/></svg><span>媒体资源</span></a>
@@ -82,6 +89,11 @@
         <p id="pageDesc">双平台车队数据统一视图</p>
       </div>
       <div class="topbar-tools">
+        <div class="seg" id="langSeg" title="Language / 语言">
+          <button data-lang="zh" class="on">中</button>
+          <button data-lang="en">EN</button>
+          <button data-lang="es">ES</button>
+        </div>
         <div class="live-pill" id="livePill" title="自动刷新">
           <i class="dot"></i><span id="liveText">实时</span>
         </div>
@@ -101,6 +113,9 @@
       <section class="page" id="page-alerts"></section>
       <section class="page" id="page-trips"></section>
       <section class="page" id="page-geofence"></section>
+      <section class="page" id="page-video"></section>
+      <section class="page" id="page-obd"></section>
+      <section class="page" id="page-adas"></section>
       <section class="page" id="page-platform"></section>
       <section class="page" id="page-media"></section>
       <section class="page" id="page-console"></section>
@@ -133,12 +148,16 @@
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flv.js@1.6.2/dist/flv.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js"></script>
 <script src="assets/js/config.js"></script>
+<script src="assets/js/i18n.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/charts.js"></script>
 <script src="assets/js/api.js"></script>
 <script src="assets/js/pages.js"></script>
 <script src="assets/js/pages2.js"></script>
+<script src="assets/js/pages3.js"></script>
 <script src="assets/js/app.js"></script>
 </body>
 </html>
