@@ -37,6 +37,11 @@
 
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:6px}
+.nav-item:focus-visible,.mrow:focus-visible,.map-dev:focus-visible,.ep:focus-visible,.mcard:focus-visible{outline-offset:-2px}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
 /* SVG 图标基础尺寸（各组件可覆盖） */
 svg.ico{width:16px;height:16px;fill:currentColor;flex:0 0 auto;display:inline-block;vertical-align:middle}
 body{
@@ -55,6 +60,7 @@ button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:#24334F;border-radius:9px;border:2px solid transparent;background-clip:content-box}
 ::-webkit-scrollbar-thumb:hover{background:#33486E;background-clip:content-box}
+*{scrollbar-width:thin;scrollbar-color:#24334F transparent}
 
 /* ---------- 布局 ---------- */
 .app{display:flex;height:100vh;overflow:hidden}
@@ -80,6 +86,7 @@ button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit
   display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:10px;
   color:var(--tx-2);font-size:13.5px;font-weight:500;cursor:pointer;position:relative;
   transition:background .16s,color .16s;margin-bottom:2px;user-select:none;
+  width:100%;border:0;background:transparent;text-align:left;font-family:inherit;
 }
 .nav-item:hover{background:#16233A;color:var(--tx)}
 .nav-item.on{background:linear-gradient(90deg,rgba(232,136,40,.17),rgba(42,194,243,.09));color:#fff}
@@ -394,6 +401,8 @@ label.fl{display:block;font-size:11px;font-weight:700;color:var(--tx-3);letter-s
   .g-4{grid-template-columns:repeat(2,minmax(0,1fr))}
   .g-32,.g-23{grid-template-columns:1fr}
 }
+.sidebar-mask{position:fixed;inset:0;background:rgba(3,7,14,.66);backdrop-filter:blur(3px);opacity:0;visibility:hidden;transition:.26s;z-index:55}
+.sidebar-mask.on{opacity:1;visibility:visible}
 @media(max-width:860px){
   .sidebar{position:fixed;left:0;top:0;bottom:0;transform:translateX(-100%);transition:transform .28s cubic-bezier(.22,1,.36,1)}
   .sidebar.on{transform:none;box-shadow:var(--sd-l)}
@@ -405,6 +414,7 @@ label.fl{display:block;font-size:11px;font-weight:700;color:var(--tx-3);letter-s
   .topbar-tools .seg{display:none}
   .map-side{width:200px}
 }
+@media(min-width:861px){ .sidebar-mask{display:none} }
 @media(max-width:560px){
   .g-5,.g-4{grid-template-columns:repeat(2,minmax(0,1fr))}
   .kpi-val{font-size:22px}
@@ -417,7 +427,6 @@ label.fl{display:block;font-size:11px;font-weight:700;color:var(--tx-3);letter-s
 .video-box video{width:100%;height:100%;object-fit:contain;background:#05090F;display:block}
 .video-cover{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--tx-2)}
 .live-badge{position:absolute;top:12px;left:12px;background:#F0453A;color:#fff;font-size:10.5px;font-weight:800;letter-spacing:1.2px;padding:3px 9px;border-radius:6px;animation:pulse 1.6s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
 .video-box .spin{position:static}
 
 /* 滑块 */

@@ -363,6 +363,7 @@
     U.$('#pageTitle').textContent = w.PAGES[page].title;
     U.$('#pageDesc').textContent = w.PAGES[page].desc;
     U.$('#sidebar').classList.remove('on');
+    var sbMaskEl = U.$('#sidebarMask'); if (sbMaskEl) sbMaskEl.classList.remove('on');
     if (opts && opts.lat && opts.lng) mapFocus = opts;
     var el = U.$('#page-' + page);
     try {
@@ -570,10 +571,18 @@
       w.CFG.app.autoRefresh = !w.CFG.app.autoRefresh; w.CONFIG.save(); setLive(w.CFG.app.autoRefresh);
       U.toast(w.CFG.app.autoRefresh ? '已开启自动刷新' : '已暂停自动刷新', 'info');
     });
-    U.$('#menuBtn').addEventListener('click', function () { U.$('#sidebar').classList.toggle('on'); });
+    function toggleSidebar(open) {
+      var sb = U.$('#sidebar'), mask = U.$('#sidebarMask');
+      var next = typeof open === 'boolean' ? open : !sb.classList.contains('on');
+      sb.classList.toggle('on', next);
+      if (mask) mask.classList.toggle('on', next);
+    }
+    U.$('#menuBtn').addEventListener('click', function () { toggleSidebar(); });
+    var sbMask = U.$('#sidebarMask');
+    if (sbMask) sbMask.addEventListener('click', function () { toggleSidebar(false); });
     U.$('#drawerClose').addEventListener('click', function () { U.Drawer.close(); });
     U.$('#drawerMask').addEventListener('click', function () { U.Drawer.close(); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') U.Drawer.close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { U.Drawer.close(); toggleSidebar(false); } });
 
     // 时间范围切换（影响刷新间隔）
     U.$$('#rangeSeg button').forEach(function (b) {

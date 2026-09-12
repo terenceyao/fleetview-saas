@@ -40,6 +40,9 @@
 <!-- ============ 应用外壳 ============ -->
 <div class="app" id="app">
 
+  <!-- 移动端侧边栏遮罩 -->
+  <div class="sidebar-mask" id="sidebarMask"></div>
+
   <!-- 侧边栏 -->
   <aside class="sidebar" id="sidebar">
     <div class="brand">
@@ -54,22 +57,22 @@
 
     <nav class="nav" id="nav">
       <div class="nav-group">运营中心</div>
-      <a class="nav-item" data-page="overview"><svg class="ico"><use href="#i-dash"/></svg><span>总览看板</span></a>
-      <a class="nav-item" data-page="devices"><svg class="ico"><use href="#i-device"/></svg><span>设备管理</span><em class="nav-badge" id="nb-devices"></em></a>
-      <a class="nav-item" data-page="map"><svg class="ico"><use href="#i-map"/></svg><span>实时地图</span></a>
-      <a class="nav-item" data-page="alerts"><svg class="ico"><use href="#i-alert"/></svg><span>告警中心</span><em class="nav-badge warn" id="nb-alerts"></em></a>
-      <a class="nav-item" data-page="trips"><svg class="ico"><use href="#i-trip"/></svg><span>行程与里程</span></a>
-      <a class="nav-item" data-page="geofence"><svg class="ico"><use href="#i-fence"/></svg><span>围栏管理</span></a>
+      <button type="button" class="nav-item" data-page="overview"><svg class="ico"><use href="#i-dash"/></svg><span>总览看板</span></button>
+      <button type="button" class="nav-item" data-page="devices"><svg class="ico"><use href="#i-device"/></svg><span>设备管理</span><em class="nav-badge" id="nb-devices"></em></button>
+      <button type="button" class="nav-item" data-page="map"><svg class="ico"><use href="#i-map"/></svg><span>实时地图</span></button>
+      <button type="button" class="nav-item" data-page="alerts"><svg class="ico"><use href="#i-alert"/></svg><span>告警中心</span><em class="nav-badge warn" id="nb-alerts"></em></button>
+      <button type="button" class="nav-item" data-page="trips"><svg class="ico"><use href="#i-trip"/></svg><span>行程与里程</span></button>
+      <button type="button" class="nav-item" data-page="geofence"><svg class="ico"><use href="#i-fence"/></svg><span>围栏管理</span></button>
       <div class="nav-group">视频与智能</div>
-      <a class="nav-item" data-page="video"><svg class="ico"><use href="#i-video"/></svg><span>实时视频</span></a>
-      <a class="nav-item" data-page="obd"><svg class="ico"><use href="#i-gauge"/></svg><span>OBD 数据分析</span></a>
-      <a class="nav-item" data-page="adas"><svg class="ico"><use href="#i-shield"/></svg><span>ADAS·DMS 智能筛选</span></a>
+      <button type="button" class="nav-item" data-page="video"><svg class="ico"><use href="#i-video"/></svg><span>实时视频</span></button>
+      <button type="button" class="nav-item" data-page="obd"><svg class="ico"><use href="#i-gauge"/></svg><span>OBD 数据分析</span></button>
+      <button type="button" class="nav-item" data-page="adas"><svg class="ico"><use href="#i-shield"/></svg><span>ADAS·DMS 智能筛选</span></button>
       <div class="nav-group">平台资源</div>
-      <a class="nav-item" data-page="platform"><svg class="ico"><use href="#i-gateway"/></svg><span>网关与模型</span></a>
-      <a class="nav-item" data-page="media"><svg class="ico"><use href="#i-media"/></svg><span>媒体资源</span></a>
+      <button type="button" class="nav-item" data-page="platform"><svg class="ico"><use href="#i-gateway"/></svg><span>网关与模型</span></button>
+      <button type="button" class="nav-item" data-page="media"><svg class="ico"><use href="#i-media"/></svg><span>媒体资源</span></button>
       <div class="nav-group">开发者</div>
-      <a class="nav-item" data-page="console"><svg class="ico"><use href="#i-code"/></svg><span>API 控制台</span></a>
-      <a class="nav-item" data-page="settings"><svg class="ico"><use href="#i-cog"/></svg><span>接入设置</span></a>
+      <button type="button" class="nav-item" data-page="console"><svg class="ico"><use href="#i-code"/></svg><span>API 控制台</span></button>
+      <button type="button" class="nav-item" data-page="settings"><svg class="ico"><use href="#i-cog"/></svg><span>接入设置</span></button>
     </nav>
 
     <div class="sidebar-foot">
@@ -83,7 +86,7 @@
   <!-- 主区 -->
   <div class="main">
     <header class="topbar">
-      <button class="icon-btn only-mobile" id="menuBtn" title="菜单"><svg class="ico"><use href="#i-menu"/></svg></button>
+      <button class="icon-btn only-mobile" id="menuBtn" title="菜单" aria-label="菜单"><svg class="ico"><use href="#i-menu"/></svg></button>
       <div class="crumb">
         <h1 id="pageTitle">总览看板</h1>
         <p id="pageDesc">双平台车队数据统一视图</p>
@@ -129,7 +132,7 @@
 <aside class="drawer" id="drawer">
   <div class="drawer-head">
     <h3 id="drawerTitle">详情</h3>
-    <button class="icon-btn" id="drawerClose"><svg class="ico"><use href="#i-close"/></svg></button>
+    <button class="icon-btn" id="drawerClose" aria-label="关闭" title="关闭"><svg class="ico"><use href="#i-close"/></svg></button>
   </div>
   <div class="drawer-body" id="drawerBody"></div>
 </aside>
